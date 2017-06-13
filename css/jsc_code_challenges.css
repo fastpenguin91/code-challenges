@@ -1,0 +1,32 @@
+body {
+}
+
+#submit_button {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#reset_button {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    background: brown;
+    border-radius: 10px;
+}
+
+.challengeIsSolved {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    background: lightgreen;
+    border-radius: 10px;
+}
+
+.code_challenge_list_item {
+    background: yellow !important;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 15px;
+}
