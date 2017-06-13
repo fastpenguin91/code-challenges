@@ -5,9 +5,7 @@
  */
 
 
-
 require_once( dirname( __FILE__ ) . '/setup.php' );
-require_once( dirname( __FILE__ ) . '/db_setup.php' );
 require( plugin_dir_path( __FILE__ ) . '/includes/class-code-challenges-wp.php' );
 
 
