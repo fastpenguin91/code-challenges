@@ -11,7 +11,6 @@ class Code_Challenges_Activator {
         $this->create_database();
         $this->create_coding_pages();
         //register_activation_hook( __FILE__, array( $this, 'jal_install_data' ) );
-        add_action( 'init', array( $this, 'create_post_type' ) );
     }
 
     private function create_coding_pages(){
@@ -56,20 +55,6 @@ class Code_Challenges_Activator {
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sql );
         add_option( 'jal_db_version', $jal_db_version );
-    }
-
-    private function create_post_type() {
-        die("create post type");
-        register_post_type( 'code_challenge',
-            array(
-                'labels' => array(
-                    'name' => __( 'Challenges' ),
-                    'singular_name' => __( 'Challenge' )
-                ),
-                'public' => true,
-                'has_archive' => true,
-            )
-        );
     }
 
     /*function jal_install_data() {

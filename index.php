@@ -18,6 +18,23 @@ if ( ! defined('WPINC' ) ) {
     die('dead!');
 }
 
+add_action( 'init', 'create_post_type_jsc' );
+
+function create_post_type_jsc() {
+    //die("create post type");
+    register_post_type( 'code_challenge',
+        array(
+            'labels' => array(
+                'name' => __( 'Challenges' ),
+                'singular_name' => __( 'Challenge' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
+
+
 function activate_code_challenges() {
     
     require_once( plugin_dir_path( __FILE__ ) . '/includes/class-code-challenges-activator.php' );
@@ -28,5 +45,11 @@ function activate_code_challenges() {
 
 register_activation_hook( __FILE__, 'activate_code_challenges' );
 
+require plugin_dir_path( __FILE__ ) . 'includes/class-code-challenges.php';
 
+function run_code_challenges(){
+  $code_challenges = new Code_Challenges();
+  $code_challenges->run();
+}
 
+run_code_challenges();
