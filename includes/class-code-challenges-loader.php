@@ -21,17 +21,18 @@ class Code_Challenges_Loader {
     protected $filters;
 
     public function __construct() {
-        //die('slow and painful __construct Code_Challenges_Loader');
 
         $this->actions = array();
         $this->filters = array();
     }
 
     public function add_action($hook, $component, $callback ){
-        //die(var_dump($hook));
-        //die('add_action in code_challenges_loader class');
-        //$this->actions = $this->add($this->actions, $hook);
         $this->actions = $this->add($this->actions, $hook, $component, $callback );
+    }
+
+    public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
+        //die('add_filter func');
+        $this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args );
     }
 
     private function add($hooks, $hook, $component, $callback ){
@@ -42,17 +43,20 @@ class Code_Challenges_Loader {
             'callback'  => $callback
             );
 
-        //die(var_dump($component));
         return $hooks;
     }
 
     public function run(){
-        //die( var_dump( $this->actions) );
-        //die(var_dump($this->actions));
+        //die(var_dump($this->filters));
+        foreach( $this->filters as $hook ) {
+            add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ) );
+        }
+
+
         foreach( $this->actions as $hook ) {
-            //die('in foreach');
             add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ) );
         }
+
     }
 }
 

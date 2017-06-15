@@ -16,7 +16,6 @@ class Code_Challenges {
     protected $version;
 
     public function __construct() {
-        //die('construct func');
 
         $this->plugin_name = 'code-challenges';
         $this->version = '1.0.0';
@@ -40,28 +39,26 @@ class Code_Challenges {
     }
 
     private function define_public_hooks(){
-        //die('define public hooks');
 
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_styles' ); 
-        //die('in define_public_hooks');
-        //add_action()
+        $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_styles' );
+        $this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public, 'the_action_function' );
+        //add_action( 'wp_ajax_the_ajax_hook', 'the_action_function' );
+        $this->loader->add_filter('single_template', $code_challenges_public, 'jsc_get_custom_post_type_template' );
+        $this->loader->add_filter('template_include', $code_challenges_public, 'portfolio_page_template' );
+        $this->loader->add_filter('template_include', $code_challenges_public, 'unsolved_challenges_template' );
     }
 
     public function get_plugin_name() {
-        //die('plugin name get...');
-        //die(var_dump($this->plugin_name));
         return $this->plugin_name;
     }
 
     public function get_version(){
-        //die('version func');
         return $this->version;
     }
 
     public function run(){
-        //die('run. Da nanananana');
         $this->loader->run();
     }
 }
