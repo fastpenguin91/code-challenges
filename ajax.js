@@ -10,6 +10,7 @@ function submit_me(user_id, challenge_id){
         the_ajax_script.ajaxurl,
         jQuery("#theForm").serialize(),
         function(response_from_the_action_function){
+            //alert("well???");
             jQuery("#formArea").html(formStr);
         }
     );

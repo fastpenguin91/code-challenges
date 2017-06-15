@@ -14,6 +14,11 @@ class Code_Challenges_Public {
         wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/code-challenges-public.css', array(), $this->version, 'all' );
     }
 
+    public function enqueue_scripts() {
+        //die('enqueing scripts!');
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../ajax.js', array('jquery'), $this->version, false );
+    }
+
     public function jsc_get_custom_post_type_template($single_template) { // Do filters next!
         global $post;
         //die('in jsc_get_custom_post_type_template');
@@ -46,7 +51,6 @@ class Code_Challenges_Public {
         return $template;
     }
 
-    //db function
     function the_action_function(){
         die('the_action_function');
         global $wpdb;
@@ -62,6 +66,8 @@ class Code_Challenges_Public {
         
         die();
     }
+
+    
 
 
 }

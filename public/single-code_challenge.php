@@ -40,7 +40,7 @@ global $wpdb;
                         <input type="hidden" name="challenge_id" value="<?php echo $challenge_id; ?>">
                         <!-- this puts the action the_ajax_hook into the serialized form -->
                         <input name="action" type="hidden" value="the_ajax_hook" />&nbsp;
-                        <input id="submit_button" value="Solve Challenge" type="button" onClick="submit_me(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
+                        <input id="submit_button" value="Solve Da Challenge" type="button" onClick="submit_me(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
                     </form>
                 </div>
 

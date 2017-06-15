@@ -1,6 +1,5 @@
 <?php
 
-
 class Code_Challenges {
 
     /**
@@ -42,12 +41,17 @@ class Code_Challenges {
 
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_styles' );
-        $this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public, 'the_action_function' );
+        
+        //die(var_dump(plugin_dir_path( dirname( __FILE__ ) ) ) );
+        //wp_enqueue_script( 'my-ajax-handle', plugins_url() . '/code-challenges/ajax.js', array( 'jquery' ), null );
+        
         //add_action( 'wp_ajax_the_ajax_hook', 'the_action_function' );
         $this->loader->add_filter('single_template', $code_challenges_public, 'jsc_get_custom_post_type_template' );
         $this->loader->add_filter('template_include', $code_challenges_public, 'portfolio_page_template' );
         $this->loader->add_filter('template_include', $code_challenges_public, 'unsolved_challenges_template' );
+        //$this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_scripts' );
+        //$this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public, 'the_action_function' );
+
     }
 
     public function get_plugin_name() {

@@ -24,6 +24,24 @@ add_action( 'wp_ajax_reset_challenge', 'the_reset_challenge_function');
 
 
 //db function
+function the_action_function(){
+    die('the_action_function');
+    global $wpdb;
+    $user = wp_get_current_user();
+    $challenge_id = (int) $_POST['challenge_id'];
+    $wpdb->insert(
+        $wpdb->prefix . 'jsc_challenge_user',
+        array(
+            'user_id' => $user->ID,
+            'challenge_id' => $challenge_id
+        )
+    );
+    
+    die();
+}
+
+
+//db function
 function the_reset_challenge_function(){
     global $wpdb;
 
