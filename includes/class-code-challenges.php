@@ -40,9 +40,6 @@ class Code_Challenges {
     private function define_public_hooks(){
 
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
-
-        //wp_enqueue_script( 'my-ajax-handle', plugin_dir_url( __FILE__ ) . '../ajax.js', array( 'jquery' ) );
-        //wp_localize_script( 'my-ajax-handle', 'the_ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         
         $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_scripts' );
         $this->loader->add_filter('single_template', $code_challenges_public, 'jsc_get_custom_post_type_template' );
@@ -50,8 +47,6 @@ class Code_Challenges {
         $this->loader->add_filter('template_include', $code_challenges_public, 'unsolved_challenges_template' );
         $this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public, 'the_action_function' );
         $this->loader->add_action('wp_ajax_reset_challenge', $code_challenges_public, 'the_reset_challenge_function' );
-
-
     }
     
 
