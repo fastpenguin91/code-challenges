@@ -45,21 +45,6 @@ function the_action_function(){
 }
 
 
-function post_poop_add_poop() {
-  $poop = get_post_meta( $_REQUEST['post_id'], 'post_poop', true );
-  $poop++;
-  update_post_meta( $_REQUEST['post_id'], 'post_poop', $poop );
-  if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { 
-    echo $poop;
-    die();
-  }
-  else {
-    wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
-    exit();
-  }
-}
-
-
 
 //db function
 function the_reset_challenge_function(){
@@ -77,64 +62,6 @@ function the_reset_challenge_function(){
     );
     die();
 }
-
-
-
-
-
-add_action( 'wp_enqueue_scripts', 'ajax_test_enqueue_scripts2' );
-function ajax_test_enqueue_scripts2() {
-  if( is_single() ) {
-    wp_enqueue_style( 'poop', plugins_url( '/poop.css', __FILE__ ) );
-  }
-
-  wp_enqueue_script( 'poop', plugins_url( '/poop.js', __FILE__ ), array('jquery'), '1.0', true );
-
-  wp_localize_script( 'poop', 'postpoop', array(
-    'ajax_url' => admin_url( 'admin-ajax.php' )
-  ));
-
-}
-
-add_filter( 'the_content', 'post_poop_display', 99 );
-function post_poop_display( $content ) {
-  $poop_text = '';
-
-  if ( is_single() ) {
-    
-    $poop = get_post_meta( get_the_ID(), 'post_poop', true );
-    $poop = ( empty( $poop ) ) ? 0 : $poop;
-
-    $poop_text = '<p class="poop-received"><a class="poop-button" href="' . admin_url( 'admin-ajax.php?action=post_poop_add_poop&post_id=' . get_the_ID() ) . '" data-id="' . get_the_ID() . '">give poop</a><span id="poop-count">' . $poop . '</span></p>'; 
-  
-  }
-
-  return $content . $poop_text;
-
-}
-
-add_action( 'wp_ajax_nopriv_post_poop_add_poop', 'post_poop_add_poop' );
-add_action( 'wp_ajax_post_poop_add_poop', 'post_poop_add_poop' );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
