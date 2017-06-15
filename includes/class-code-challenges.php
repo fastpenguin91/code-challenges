@@ -42,6 +42,7 @@ class Code_Challenges {
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
         
         $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_scripts' );
+        $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_styles' );
         $this->loader->add_filter('single_template', $code_challenges_public, 'jsc_get_custom_post_type_template' );
         $this->loader->add_filter('template_include', $code_challenges_public, 'portfolio_page_template' );
         $this->loader->add_filter('template_include', $code_challenges_public, 'unsolved_challenges_template' );
