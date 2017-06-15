@@ -15,8 +15,11 @@ class Code_Challenges_Public {
     }
 
     public function enqueue_scripts() {
+        wp_enqueue_script( 'my-ajax-handle', plugin_dir_url( __FILE__ ) . '../ajax.js', array( 'jquery' ) );
+        wp_localize_script( 'my-ajax-handle', 'the_ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+        
         //die('enqueing scripts!');
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../ajax.js', array('jquery'), $this->version, false );
+        //wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../ajax.js', array('jquery'), $this->version, false );
     }
 
     public function jsc_get_custom_post_type_template($single_template) { // Do filters next!
