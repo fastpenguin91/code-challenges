@@ -9,7 +9,7 @@ function submit_me(user_id, challenge_id){
     jQuery.post(
         solve_challenge_script.ajaxurl,
         jQuery("#theForm").serialize(),
-        function(response_from_solve_challenge_function){
+        function(){
             jQuery("#formArea").html(formStr);
         }
     );
@@ -25,7 +25,7 @@ function resetChallenge(user_id, challenge_id){
     jQuery.post(
         solve_challenge_script.ajaxurl,
         jQuery("#theForm").serialize(),
-        function(response_from_solve_challenge_function){
+        function(){
             jQuery("#formArea").html(formStr);
         }
     );
