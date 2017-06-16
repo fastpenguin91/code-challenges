@@ -19,7 +19,7 @@ class Code_Challenges_Public_DB {
         die();
     }
 
-    function the_reset_challenge_function(){
+    function reset_challenge_function(){
         global $wpdb;
 
         $user = wp_get_current_user();

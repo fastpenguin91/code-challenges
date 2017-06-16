@@ -38,8 +38,8 @@ global $wpdb;
                 <div id="formArea">
                     <form id="theForm">
                         <input type="hidden" name="challenge_id" value="<?php echo $challenge_id; ?>">
-                        <!-- this puts the action the_ajax_hook into the serialized form -->
-                        <input name="action" type="hidden" value="the_ajax_hook" />&nbsp;
+                        <!-- this puts the action solve_challenge_ajax_hook into the serialized form -->
+                        <input name="action" type="hidden" value="solve_challenge_ajax_hook" />&nbsp;
                         <input id="submit_button" value="Solve Da Challenge" type="button" onClick="submit_me(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
                     </form>
                 </div>
@@ -51,8 +51,8 @@ global $wpdb;
                     <br><span class="challengeIsSolved" id="solveChallenge">Challenge is Solved!</span>
                     <form style="display:inline-block;" id="theForm">
                         <input type="hidden" name="challenge_id" value="<?php echo $challenge_id; ?>">
-                        <!-- this puts the action the_ajax_hook into the serialized form -->
-                        <input name="action" type="hidden" value="reset_challenge" />&nbsp;
+                        <!-- this puts the action reset_challenge_ajax_hook into the serialized form -->
+                        <input name="action" type="hidden" value="reset_challenge_ajax_hook" />&nbsp;
                         <input id="reset_button" value = "Reset Challenge?" type="button" onClick="resetChallenge(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
                     </form>
                 </div>
