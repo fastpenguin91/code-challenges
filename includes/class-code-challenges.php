@@ -128,7 +128,7 @@ class Code_Challenges {
 
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
 
-        //$code_challenges_public_db = new Code_Challenges_Public_DB();
+        $code_challenges_public_db = new Code_Challenges_Public_DB();
         
         $this->loader->add_action('init', $code_challenges_public, 'create_post_type_jsc' );
         
@@ -139,8 +139,8 @@ class Code_Challenges {
         $this->loader->add_filter('template_include', $code_challenges_public, 'portfolio_page_template' );
         $this->loader->add_filter('template_include', $code_challenges_public, 'unsolved_challenges_template' );
         
-        $this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public, 'the_action_function' );
-        $this->loader->add_action('wp_ajax_reset_challenge', $code_challenges_public, 'the_reset_challenge_function' );
+        $this->loader->add_action('wp_ajax_the_ajax_hook', $code_challenges_public_db, 'the_action_function' );
+        $this->loader->add_action('wp_ajax_reset_challenge', $code_challenges_public_db, 'the_reset_challenge_function' );
     }
     
 

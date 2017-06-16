@@ -2,7 +2,6 @@
 
 class Code_Challenges_Public_DB {
     public function __construct(){
-        //die('public db die');
     }
 
     function the_action_function(){

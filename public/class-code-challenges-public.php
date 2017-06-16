@@ -7,11 +7,6 @@ class Code_Challenges_Public {
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-
-        /*
-        * separating front facing db methods into separate class
-        */
-        //$this->load_db_public();
         
     }
 
@@ -66,45 +61,6 @@ class Code_Challenges_Public {
             }
         }
         return $template;
-    }
-
-    /*private function load_db_public(){
-        //die(var_dump(plugin_dir_path(dirname( __FILE__ ) ) . 'class-code-challenges-public-db.php'));
-        require_once ( plugin_dir_path(dirname( __FILE__ ) ) . 'public/class-code-challenges-public-db.php' );
-        //Code_Challenges_Public_DB::
-        $code_challenges_public_db = new Code_Challenges_Public_DB();
-        //$code_challenges_public_db
-
-    }*/
-
-    function the_action_function(){
-        global $wpdb;
-        $user = wp_get_current_user();
-        $challenge_id = (int) $_POST['challenge_id'];
-        $wpdb->insert(
-            $wpdb->prefix . 'jsc_challenge_user',
-            array(
-                'user_id' => $user->ID,
-                'challenge_id' => $challenge_id
-            )
-        );
-        
-        die();
-    }
-
-    function the_reset_challenge_function(){
-        global $wpdb;
-
-        $user = wp_get_current_user();
-        $challenge_id = (int) $_POST['challenge_id'];
-        $wpdb->delete(
-            $wpdb->prefix . 'jsc_challenge_user',
-            array(
-                'user_id' => $user->ID,
-                'challenge_id' => $challenge_id
-            )
-        );
-        die();
     }
 
 
