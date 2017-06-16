@@ -29,9 +29,13 @@ global $wpdb;
 
         $results = $wpdb->get_results( "SELECT * FROM wp_jsc_challenge_user WHERE user_id = $user->ID AND challenge_id = $challenge_id");
         ?>
-            <strong>Challenge ID:</strong><?php the_ID();?>
-            <strong>User ID:</strong><?php echo $user->ID;?>
-            <strong>Content:</strong><?php the_content();?>
+            <h1 class="single-challenge-title">Challenge: <?php the_title();?></h1>
+            <div class="single-challenge-description">
+                <strong style="font-size: 24px; margin-bottom: 150px;">Description:</strong>
+                <p class="single-challenge-content-text">
+                    <?php the_content();?>
+                </p>
+            </div>
             <?php
             if ( empty($results) ) { ?>
                 <br>
@@ -66,9 +70,9 @@ global $wpdb;
 
     </main><!-- .site-main -->
 
-    <?php get_sidebar( 'content-bottom' ); ?>
+    <?php //get_sidebar( 'content-bottom' ); ?>
 
 </div><!-- .content-area -->
 
-<?php get_sidebar(); ?>
+<?php// get_sidebar(); ?>
 <?php get_footer(); ?>

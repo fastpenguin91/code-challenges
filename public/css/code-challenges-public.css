@@ -1,5 +1,21 @@
-body {
-    background: yellow !important;
+.single-challenge-title {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.single-challenge-description {
+    margin: 25px;
+    padding: 25px;
+    background: yellow;
+}
+
+.single-challenge-content-text {
+    padding-top: 15px;
+}
+
+#formArea {
+    border-top: 2px solid black;
+    text-align: center;
 }
 
 #submit_button {
@@ -12,13 +28,20 @@ body {
 #reset_button {
     display: inline-block;
     margin: 20px;
-    padding: 20px;
-    background: brown;
+    padding: 10px;
+    background: lightblue;
     border-radius: 10px;
+}
+
+#formArea input[type=button] {
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .challengeIsSolved {
     display: inline-block;
+    font-weight: bold;
     margin: 20px;
     padding: 20px;
     background: lightgreen;
