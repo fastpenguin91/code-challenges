@@ -41,7 +41,6 @@ class Code_Challenges {
 
         $code_challenges_public = new Code_Challenges_Public( $this->get_plugin_name(), $this->get_version() );
         
-        //add_action( 'init', 'create_post_type_jsc' );
         $this->loader->add_action('init', $code_challenges_public, 'create_post_type_jsc' );
         $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_scripts' );
         $this->loader->add_action('wp_enqueue_scripts', $code_challenges_public, 'enqueue_styles' );

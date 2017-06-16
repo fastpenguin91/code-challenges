@@ -44,7 +44,6 @@ class Code_Challenges_Public {
     }
 
     function create_post_type_jsc() {
-        //die("create post type");
         register_post_type( 'code_challenge',
             array(
                 'labels' => array(
@@ -58,7 +57,6 @@ class Code_Challenges_Public {
     }
 
     function unsolved_challenges_template( $template ) {
-        //die('unsolved_challenges_template');
         if ( is_page( 'unsolved-challenges' )  ) {
             $new_template = dirname( __FILE__ ) . '/unsolved-challenges.php';
             if ( '' != $new_template ) {
@@ -68,9 +66,7 @@ class Code_Challenges_Public {
         return $template;
     }
 
-    //db function
     function the_action_function(){
-        //die('the_action_function');
         global $wpdb;
         $user = wp_get_current_user();
         $challenge_id = (int) $_POST['challenge_id'];
@@ -85,10 +81,7 @@ class Code_Challenges_Public {
         die();
     }
 
-
-    //db function
     function the_reset_challenge_function(){
-        //die('reset challenge function');
         global $wpdb;
 
         $user = wp_get_current_user();
@@ -102,8 +95,6 @@ class Code_Challenges_Public {
         );
         die();
     }
-
-    
 
 
 }
