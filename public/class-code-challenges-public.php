@@ -7,6 +7,11 @@ class Code_Challenges_Public {
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
+
+        /*
+        * separating front facing db methods into separate class
+        */
+        //$this->load_db_public();
         
     }
 
@@ -15,16 +20,14 @@ class Code_Challenges_Public {
     }
 
     public function enqueue_scripts() {
-        wp_enqueue_script( 'my-ajax-handle', plugin_dir_url( __FILE__ ) . '../ajax.js', array( 'jquery' ) );
-        wp_localize_script( 'my-ajax-handle', 'the_ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-        
-        //die('enqueing scripts!');
-        //wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../ajax.js', array('jquery'), $this->version, false );
+        //die('scripts enqueue');
+        wp_enqueue_script( 'code-challenges-ajax-handle', plugin_dir_url( __FILE__ ) . 'js/solve_challenge_ajax.js', array( 'jquery' ) );
+        wp_localize_script( 'code-challenges-ajax-handle', 'solve_challenge_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     }
 
-    public function jsc_get_custom_post_type_template($single_template) { // Do filters next!
+    public function jsc_get_custom_post_type_template($single_template) {
         global $post;
-        //die('in jsc_get_custom_post_type_template');
+
         if ($post->post_type == 'code_challenge') {
             $single_template = dirname( __FILE__ ) . '/single-code_challenge.php';
         }
@@ -32,7 +35,6 @@ class Code_Challenges_Public {
     }
 
     public function portfolio_page_template( $template ) {
-        //die('portfolio_page_template');
         if ( is_page( 'code-challenges' )  ) {
             $new_template = dirname( __FILE__ ) . '/archive-challenge.php';
             if ( '' != $new_template ) {
@@ -43,7 +45,7 @@ class Code_Challenges_Public {
         return $template;
     }
 
-    function create_post_type_jsc() {
+    public function create_post_type_jsc() {
         register_post_type( 'code_challenge',
             array(
                 'labels' => array(
@@ -56,7 +58,7 @@ class Code_Challenges_Public {
         );
     }
 
-    function unsolved_challenges_template( $template ) {
+    public function unsolved_challenges_template( $template ) {
         if ( is_page( 'unsolved-challenges' )  ) {
             $new_template = dirname( __FILE__ ) . '/unsolved-challenges.php';
             if ( '' != $new_template ) {
@@ -65,6 +67,15 @@ class Code_Challenges_Public {
         }
         return $template;
     }
+
+    /*private function load_db_public(){
+        //die(var_dump(plugin_dir_path(dirname( __FILE__ ) ) . 'class-code-challenges-public-db.php'));
+        require_once ( plugin_dir_path(dirname( __FILE__ ) ) . 'public/class-code-challenges-public-db.php' );
+        //Code_Challenges_Public_DB::
+        $code_challenges_public_db = new Code_Challenges_Public_DB();
+        //$code_challenges_public_db
+
+    }*/
 
     function the_action_function(){
         global $wpdb;
