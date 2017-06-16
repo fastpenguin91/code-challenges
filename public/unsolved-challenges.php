@@ -18,18 +18,48 @@ get_header();
             array_push($solved_ids, $elem->challenge_id);
         }
 
+
         $myposts = array( 'post_type' => 'code_challenge', 'post__not_in' => $solved_ids );
         $loop = new WP_Query( $myposts );
         ?>
+
         
+        <?php
+        if ( !$loop->have_posts() ) {?>
+            <h1 class="challenge-title">You've solved all the challenges!</h1>
+
+            <div style="text-align: center;">
+                <a href="https://truthseekers.io/blog">
+                    <div style="display: inline-block; background: #e3e6ea; padding: 50px; border-radius: 15px; margin: 25px;">
+                        <h3>Check out our Blog</h3>
+                    </div>
+                </a>
+
+                <a href="https://truthseekers.io/shop">
+                    <div style="display: inline-block; background: #e3e6ea; padding: 50px; border-radius: 15px; margin: 25px;">
+                        <h3>Visit our Shop</h3>
+                    </div>
+                </a>
+            </div>
+
+            <?php
+        } else {
+            ?>
+            <h1 class="challenge-title">Unsolved Challenges:</h1>
+            <?php
+        }
+        ?>
+
         <?php while ( $loop->have_posts() ) : $loop->the_post();?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <header class="entry-header">
                     <!-- Display Title and Author Name -->
-                    <div class="code_challenge_list_item">
-                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><br />
-                        <br />
-                    </div>
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="code_challenge_list_item">
+                            <h2><?php the_title(); ?></h2><br />
+                            <br />
+                        </div>
+                    </a>
                 </header>
             </article>
         <?php endwhile; ?>

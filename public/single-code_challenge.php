@@ -29,7 +29,7 @@ global $wpdb;
 
         $results = $wpdb->get_results( "SELECT * FROM wp_jsc_challenge_user WHERE user_id = $user->ID AND challenge_id = $challenge_id");
         ?>
-            <h1 class="single-challenge-title">Challenge: <?php the_title();?></h1>
+            <h1 class="challenge-title">Challenge: <strong><?php the_title();?></strong></h1>
             <div class="single-challenge-description">
                 <strong style="font-size: 24px; margin-bottom: 150px;">Description:</strong>
                 <p class="single-challenge-content-text">
@@ -44,7 +44,7 @@ global $wpdb;
                         <input type="hidden" name="challenge_id" value="<?php echo $challenge_id; ?>">
                         <!-- this puts the action solve_challenge_ajax_hook into the serialized form -->
                         <input name="action" type="hidden" value="solve_challenge_ajax_hook" />&nbsp;
-                        <input id="submit_button" value="Solve Da Challenge" type="button" onClick="submit_me(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
+                        <input id="submit_button" value="Solve Challenge" type="button" onClick="submit_me(<?php echo $user->ID;?>, <?php echo $challenge_id;?>);" />
                     </form>
                 </div>
 
