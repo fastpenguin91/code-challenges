@@ -4,7 +4,7 @@ class Code_Challenges_Public_DB {
     public function __construct(){
     }
 
-    function the_action_function(){
+    function solve_challenge_function(){
         global $wpdb;
         $user = wp_get_current_user();
         $challenge_id = (int) $_POST['challenge_id'];
