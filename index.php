@@ -18,14 +18,7 @@ if ( ! defined('WPINC' ) ) {
     die('dead!');
 }
 
-add_action( 'init', 'create_post_type_jsc' );
-
-
-
-
-
-
-
+//add_action( 'init', 'create_post_type_jsc' );
 
 
 function create_post_type_jsc() {

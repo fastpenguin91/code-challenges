@@ -43,6 +43,20 @@ class Code_Challenges_Public {
         return $template;
     }
 
+    function create_post_type_jsc() {
+        //die("create post type");
+        register_post_type( 'code_challenge',
+            array(
+                'labels' => array(
+                    'name' => __( 'Challenges' ),
+                    'singular_name' => __( 'Challenge' )
+                ),
+                'public' => true,
+                'has_archive' => true,
+            )
+        );
+    }
+
     function unsolved_challenges_template( $template ) {
         //die('unsolved_challenges_template');
         if ( is_page( 'unsolved-challenges' )  ) {
