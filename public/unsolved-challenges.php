@@ -30,13 +30,13 @@ get_header();
 
             <div style="text-align: center;">
                 <a href="https://truthseekers.io/blog">
-                    <div style="display: inline-block; background: #e3e6ea; padding: 50px; border-radius: 15px; margin: 25px;">
+                    <div class="btn-main">
                         <h3>Check out our Blog</h3>
                     </div>
                 </a>
 
                 <a href="https://truthseekers.io/shop">
-                    <div style="display: inline-block; background: #e3e6ea; padding: 50px; border-radius: 15px; margin: 25px;">
+                    <div class="btn-main">
                         <h3>Visit our Shop</h3>
                     </div>
                 </a>

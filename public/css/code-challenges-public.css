@@ -3,6 +3,22 @@
     padding-top: 25px;
 }
 
+.btn-main {
+    display: inline-block;
+    background: #e3e6ea;
+    padding: 50px;
+    border-radius: 15px;
+    margin: 25px;
+}
+
+.user-message {
+    background: #d6db3f;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
 .single-challenge-description {
     margin: 25px;
     padding: 25px;
