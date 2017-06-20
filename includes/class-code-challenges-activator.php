@@ -15,7 +15,7 @@ class Code_Challenges_Activator {
 
     private function create_coding_pages(){
         $codeChallenges = array(
-            'post_title'  => 'code-challenges',
+            'post_title'  => 'challenges',
             'post_status' => 'publish',
             'post_type'   => 'page',
             'post_name'   => 'code-challenges'

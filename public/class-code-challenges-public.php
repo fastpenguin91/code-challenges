@@ -30,7 +30,7 @@ class Code_Challenges_Public {
     }
 
     public function portfolio_page_template( $template ) {
-        if ( is_page( 'code-challenges' )  ) {
+        if ( is_page( 'challenges' )  ) {
             $new_template = dirname( __FILE__ ) . '/archive-challenge.php';
             if ( '' != $new_template ) {
                 return $new_template ;
