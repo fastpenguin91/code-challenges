@@ -11,10 +11,12 @@ get_header();
         <?php
         $num_of_posts = wp_count_posts('code_challenge');
         global $wpdb;
+        $db_name = $wpdb->prefix . 'jsc_challenge_user';
 
         $user = wp_get_current_user();
-        $num_of_solved_challenges = $wpdb->get_results( "SELECT COUNT(*) AS post_count FROM wp_jsc_challenge_user WHERE user_id = $user->ID");
-        $mypost = array( 'post_type' => 'code_challenge', );
+        $paged = ( get_query_var('paged') );
+        $num_of_solved_challenges = $wpdb->get_results( "SELECT COUNT(*) AS post_count FROM $db_name WHERE user_id = $user->ID");
+        $mypost = array( 'post_type' => 'code_challenge', 'paged' => $paged );
         $loop = new WP_Query( $mypost );
         ?>
 
@@ -33,6 +35,13 @@ get_header();
             </article>
             
         <?php endwhile; ?>
+        <div class="challenge-pagination">
+            <span><?php next_posts_link( 'older posts' , $loop->max_num_pages ); ?></span>
+            <span><?php previous_posts_link( 'Newer posts' );?></span>
+        </div>
+        
+
+
     </div>
 </div>
 <?php wp_reset_query(); ?>

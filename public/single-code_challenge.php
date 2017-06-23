@@ -13,6 +13,7 @@ if ( is_user_logged_in() ) {
 }
 get_header();
 global $wpdb;
+$db_name = $wpdb->prefix . 'jsc_challenge_user';
 ?>
 
 <div id="primary" class="content-area">
@@ -31,7 +32,7 @@ global $wpdb;
         $challenge_id = (int) get_the_ID();
 
         //Determine if Challenge is solved. E 
-        $single_users_challenge = $wpdb->get_results( "SELECT * FROM wp_jsc_challenge_user WHERE user_id = $user->ID AND challenge_id = $challenge_id");
+        $single_users_challenge = $wpdb->get_results( "SELECT * FROM $db_name WHERE user_id = $user->ID AND challenge_id = $challenge_id");
         ?>
             <h1 class="challenge-title">Challenge: <strong><?php the_title();?></strong></h1>
             <div class="single-challenge-description">

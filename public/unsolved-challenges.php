@@ -10,16 +10,17 @@ get_header();
     <div id="content" role="main">
         <?php
         global $wpdb;
+        $db_name = $wpdb->prefix . 'jsc_challenge_user';
 
         $user = wp_get_current_user();
-        $solved_id_array = $wpdb->get_results( "SELECT challenge_id FROM wp_jsc_challenge_user WHERE user_id = $user->ID");
+        $solved_id_array = $wpdb->get_results( "SELECT challenge_id FROM $db_name WHERE user_id = $user->ID");
         $solved_ids = array();
         foreach($solved_id_array as $elem) {
             array_push($solved_ids, $elem->challenge_id);
         }
 
-
-        $myposts = array( 'post_type' => 'code_challenge', 'post__not_in' => $solved_ids );
+        $paged = ( get_query_var('paged') );
+        $myposts = array( 'post_type' => 'code_challenge', 'post__not_in' => $solved_ids, 'paged' => $paged );
         $loop = new WP_Query( $myposts );
         ?>
 
@@ -52,7 +53,7 @@ get_header();
 
         <?php while ( $loop->have_posts() ) : $loop->the_post();?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="entry-header">
+                <!--<header class="entry-header">-->
                     <!-- Display Title and Author Name -->
                     <a href="<?php the_permalink(); ?>">
                         <div class="code_challenge_list_item">
@@ -60,9 +61,16 @@ get_header();
                             <br />
                         </div>
                     </a>
-                </header>
+                <!--</header>-->
             </article>
         <?php endwhile; ?>
+
+        <div class="challenge-pagination">
+            <span><?php next_posts_link( 'older posts' , $loop->max_num_pages ); ?></span>
+            <span><?php previous_posts_link( 'Newer posts' );?></span>
+        </div>
+
+
     </div>
 </div>
 <?php wp_reset_query(); ?>
