@@ -29,7 +29,7 @@ get_header();
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <a href="<?php the_permalink(); ?>">
                     <div class="code_challenge_list_item">
-                        <h2>Challenge: <?php the_title(); ?></h2><br />
+                        <h2><?php the_title(); ?></h2><br />
                     </div>
                 </a>
             </article>
